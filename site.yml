@@ -3,7 +3,6 @@
   become: true
   pre_tasks:
 
-
   - name: Install updates for fedora
     tags: always
     ansible.builtin.dnf:
@@ -29,6 +28,16 @@
         - apache2
         - libapache2-mod-php
     when: ansible_distribution == "Ubuntu"
+
+  - name:  Copy html file to apache servers
+    tags: apache,ubuntu
+    ansible.builtin.copy:
+      src: default_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
+      
 
 - hosts: db_servers
   tags: db,fedora
