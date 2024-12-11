@@ -3,16 +3,18 @@
   become: true
   tasks: 
 
-  - name: update repository index
+  - name: Update repository index
     ansible.builtin.apt:
-      update_cache: yes
+      update_cache: true
 
-  - name: install apache2 package
+  - name: Install apache2 package
     ansible.builtin.apt:
       name: apache2
       state: latest
-  
-  - name: install support for php
+      
+
+  - name: Install support for php
     ansible.builtin.apt:
       name: libapache2-mod-php
       state: latest
+      
