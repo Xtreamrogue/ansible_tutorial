@@ -1,9 +1,0 @@
-- name: Test dnf5 module
-  hosts: db_servers
-  become: false
-  become_user: xtream
-  tasks:
-    - name: Install a package
-      ansible.builtin.dnf5:
-        name: vim
-        state: present
